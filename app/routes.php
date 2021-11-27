@@ -10,6 +10,7 @@ return function (App $app) {
     $app->get('/work-experience', 'GetAllWorkExperienceController');
     $app->get('/education', 'GetAllEducationController');
     $app->get('/projects', 'GetAllProjectsController');
+    $app->get('/other-certifications', 'GetAllOtherCertificationsController');
 
 
 };
