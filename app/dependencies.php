@@ -44,11 +44,13 @@ return function (ContainerBuilder $containerBuilder) {
     $container['EducationModel'] = DI\factory('\App\Factories\Models\EducationModelFactory');
     $container['ProjectsModel'] = DI\factory('\App\Factories\Models\ProjectModelFactory');
     $container['OtherCertificationsModel'] = DI\factory('\App\Factories\Models\OtherCertificationsModelFactory');
+    $container['HobbiesModel'] = DI\factory('\App\Factories\Models\HobbiesModelFactory');
     // Controllers
     $container['GetAllWorkExperienceController'] = DI\factory('\App\Factories\Controllers\GetAllWorkExperienceControllerFactory');
     $container['GetAllEducationController'] = DI\factory('\App\Factories\Controllers\GetAllEducationControllerFactory');
     $container['GetAllProjectsController'] = DI\factory('\App\Factories\Controllers\GetAllProjectsControllerFactory');
     $container['GetAllOtherCertificationsController'] = DI\factory('\App\Factories\Controllers\GetAllOtherCertificationsControllerFactory');
+    $container['GetAllHobbiesController'] = DI\factory('\App\Factories\Controllers\GetAllHobbiesControllerFactory');
 
     $containerBuilder->addDefinitions($container);
 };
