@@ -33,5 +33,18 @@ return function (ContainerBuilder $containerBuilder) {
         return $renderer;
     };
 
+    $container['db'] = function () {
+        $db = new PDO('mysql:host=127.0.0.1;dbname=CV', 'root', 'password');
+        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        return $db;
+    };
+
+    // Models
+    $container['WorkExperienceModel'] = DI\factory('\App\Factories\WorkExperienceModelFactory');
+    $container['EducationModel'] = DI\factory('\App\Factories\EducationModelFactory');
+    // Controllers
+    $container['GetAllWorkExperienceController'] = DI\factory('\App\Factories\GetAllWorkExperienceControllerFactory');
+    $container['GetAllEducationController'] = DI\factory('\App\Factories\GetAllEducationControllerFactory');
+
     $containerBuilder->addDefinitions($container);
 };
