@@ -4,7 +4,7 @@ namespace App\Models;
 
 use PDO;
 
-class ProjectModel
+class ProjectsModel
 {
     protected PDO $db;
 

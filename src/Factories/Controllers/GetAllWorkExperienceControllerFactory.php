@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factories;
+namespace App\Factories\Controllers;
 
 use App\Controllers\GetAllWorkExperienceController;
 use Psr\Container\ContainerInterface;

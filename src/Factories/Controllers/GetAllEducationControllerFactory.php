@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factories;
+namespace App\Factories\Controllers;
 
 use App\Controllers\GetAllEducationController;
 use Psr\Container\ContainerInterface;

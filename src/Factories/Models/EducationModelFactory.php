@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factories;
+namespace App\Factories\Models;
 
 use App\Models\EducationModel;
 use Psr\Container\ContainerInterface;

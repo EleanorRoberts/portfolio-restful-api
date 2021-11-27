@@ -40,11 +40,13 @@ return function (ContainerBuilder $containerBuilder) {
     };
 
     // Models
-    $container['WorkExperienceModel'] = DI\factory('\App\Factories\WorkExperienceModelFactory');
-    $container['EducationModel'] = DI\factory('\App\Factories\EducationModelFactory');
+    $container['WorkExperienceModel'] = DI\factory('\App\Factories\Models\WorkExperienceModelFactory');
+    $container['EducationModel'] = DI\factory('\App\Factories\Models\EducationModelFactory');
+    $container['ProjectsModel'] = DI\factory('\App\Factories\Models\ProjectModelFactory');
     // Controllers
-    $container['GetAllWorkExperienceController'] = DI\factory('\App\Factories\GetAllWorkExperienceControllerFactory');
-    $container['GetAllEducationController'] = DI\factory('\App\Factories\GetAllEducationControllerFactory');
+    $container['GetAllWorkExperienceController'] = DI\factory('\App\Factories\Controllers\GetAllWorkExperienceControllerFactory');
+    $container['GetAllEducationController'] = DI\factory('\App\Factories\Controllers\GetAllEducationControllerFactory');
+    $container['GetAllProjectsController'] = DI\factory('\App\Factories\Controllers\GetAllProjectsControllerFactory');
 
     $containerBuilder->addDefinitions($container);
 };

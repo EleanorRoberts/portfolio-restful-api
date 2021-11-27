@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factories;
+namespace App\Factories\Models;
 
 use App\Models\WorkExperienceModel;
 use Psr\Container\ContainerInterface;
