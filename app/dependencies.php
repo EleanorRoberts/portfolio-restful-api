@@ -48,6 +48,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AboutMeModel'] = DI\factory('\App\Factories\Models\AboutMeModelFactory');
     // Controllers
     $container['GetAllWorkExperienceController'] = DI\factory('\App\Factories\Controllers\GetAllWorkExperienceControllerFactory');
+    $container['AddWorkExperienceController'] = DI\factory('\App\Factories\Controllers\AddWorkExperienceControllerFactory');
     $container['GetAllEducationController'] = DI\factory('\App\Factories\Controllers\GetAllEducationControllerFactory');
     $container['GetAllProjectsController'] = DI\factory('\App\Factories\Controllers\GetAllProjectsControllerFactory');
     $container['GetAllOtherCertificationsController'] = DI\factory('\App\Factories\Controllers\GetAllOtherCertificationsControllerFactory');
