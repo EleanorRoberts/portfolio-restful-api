@@ -7,8 +7,12 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 return function (App $app) {
     $container = $app->getContainer();
 
+    // Work experience
     $app->get('/work-experience', 'GetAllWorkExperienceController');
     $app->post('/work-experience', 'AddWorkExperienceController');
+    $app->put('/work-experience/{id}', 'EditWorkExperienceController');
+//    $app->delete('/work-experience/{id}', 'DeleteWorkExperienceController');
+
     $app->get('/education', 'GetAllEducationController');
     $app->get('/projects', 'GetAllProjectsController');
     $app->get('/other-certifications', 'GetAllOtherCertificationsController');

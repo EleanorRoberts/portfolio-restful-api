@@ -7,7 +7,7 @@ use App\Models\WorkExperienceModel;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class AddWorkExperienceController extends Controller
+class EditWorkExperienceController extends Controller
 {
     protected WorkExperienceModel $model;
 
@@ -19,10 +19,10 @@ class AddWorkExperienceController extends Controller
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
         $data = $request->getParsedBody();
-        $attempt = $this->model->addWorkExperience($data['company'], $data['position'], $data['startDate'], $data['leaveDate']);
+        $attempt = $this->model->editWorkExperience($args['id'], $data);
         if ($attempt) {
-            return $this->respondWithJson($response, ['Work experience added!']);
+            return $this->respondWithJson($response, ['Work experience updated!']);
         }
-        return $this->respondWithJson($response, ['It broke :( Not added'], 400);
+        return $this->respondWithJson($response, ['Something broke :( Not updated'], 400);
     }
 }

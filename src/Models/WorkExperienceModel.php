@@ -22,13 +22,38 @@ class WorkExperienceModel
 
     public function addWorkExperience(string $company, string $position, string $startDate, string $leaveDate): bool
     {
-        $query = $this->db->prepare('INSERT INTO `workexperience` (`company`,`position`,`start_date`,`leave_date`) VALUES (:company, :position, :startDate, :leaveDate);');
+        $mysql = "INSERT INTO `work_experience` (`company`,`position`,`start_date`,`leave_date`) VALUES (:company, :position, :start_date, :leave_date);";
+        $query = $this->db->prepare($mysql);
         $bindingParams = [
             'company' => $company,
             'position' => $position,
-            'startDate' => $startDate,
-            'leaveDate' => $leaveDate
+            'start_date' => $startDate,
+            'leave_date' => $leaveDate
         ];
-        return($query->execute());
+        return ($query->execute($bindingParams));
+    }
+
+    public function editWorkExperience(int $id, array $newData): bool
+    {
+        $workExperienceFields = $this->getWorkExperienceFields();
+        if (!in_array(strtolower(trim($newData['field'])), $workExperienceFields)) {
+            $mysql = "UPDATE `work_experience` SET :field = :newValue WHERE `id` = :id;";
+            $query = $this->db->prepare($mysql);
+            $bindingParams = [
+                'id' => $id,
+                'field' => $newData['field'],
+                'newValue' => $newData['newValue']
+            ];
+            return ($query->execute($bindingParams));
+        }
+        return false;
+    }
+
+    public function getWorkExperienceFields(): array
+    {
+        $mysql = "SELECT column_name as `Field` FROM information_schema.columns WHERE table_name='work_experience' AND NOT column_name = 'id';";
+        $query = $this->db->prepare($mysql);
+        $query->execute();
+        return $query->fetchAll();
     }
 }

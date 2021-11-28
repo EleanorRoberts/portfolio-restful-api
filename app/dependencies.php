@@ -49,6 +49,8 @@ return function (ContainerBuilder $containerBuilder) {
     // Controllers
     $container['GetAllWorkExperienceController'] = DI\factory('\App\Factories\Controllers\GetAllWorkExperienceControllerFactory');
     $container['AddWorkExperienceController'] = DI\factory('\App\Factories\Controllers\AddWorkExperienceControllerFactory');
+    $container['EditWorkExperienceController'] = DI\factory('\App\Factories\Controllers\EditWorkExperienceControllerFactory');
+    //
     $container['GetAllEducationController'] = DI\factory('\App\Factories\Controllers\GetAllEducationControllerFactory');
     $container['GetAllProjectsController'] = DI\factory('\App\Factories\Controllers\GetAllProjectsControllerFactory');
     $container['GetAllOtherCertificationsController'] = DI\factory('\App\Factories\Controllers\GetAllOtherCertificationsControllerFactory');
