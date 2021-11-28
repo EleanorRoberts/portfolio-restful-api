@@ -45,12 +45,15 @@ return function (ContainerBuilder $containerBuilder) {
     $container['ProjectsModel'] = DI\factory('\App\Factories\Models\ProjectModelFactory');
     $container['OtherCertificationsModel'] = DI\factory('\App\Factories\Models\OtherCertificationsModelFactory');
     $container['HobbiesModel'] = DI\factory('\App\Factories\Models\HobbiesModelFactory');
+    $container['AboutMeModel'] = DI\factory('\App\Factories\Models\AboutMeModelFactory');
     // Controllers
     $container['GetAllWorkExperienceController'] = DI\factory('\App\Factories\Controllers\GetAllWorkExperienceControllerFactory');
     $container['GetAllEducationController'] = DI\factory('\App\Factories\Controllers\GetAllEducationControllerFactory');
     $container['GetAllProjectsController'] = DI\factory('\App\Factories\Controllers\GetAllProjectsControllerFactory');
     $container['GetAllOtherCertificationsController'] = DI\factory('\App\Factories\Controllers\GetAllOtherCertificationsControllerFactory');
     $container['GetAllHobbiesController'] = DI\factory('\App\Factories\Controllers\GetAllHobbiesControllerFactory');
+    $container['GetAllAboutMeController'] = DI\factory('\App\Factories\Controllers\GetAllAboutMeControllerFactory');
+    $container['GetOneAboutMeController'] = DI\factory('\App\Factories\Controllers\GetOneAboutMeControllerFactory');
 
     $containerBuilder->addDefinitions($container);
 };

@@ -20,9 +20,15 @@ class WorkExperienceModel
         return $query->fetchAll();
     }
 
-    public function addWorkExperience(string $company, string $position, string $startDate, string $endDate): bool
+    public function addWorkExperience(string $company, string $position, string $startDate, string $leaveDate): bool
     {
         $query = $this->db->prepare('INSERT INTO `workexperience` (`company`,`position`,`start_date`,`leave_date`) VALUES (:company, :position, :startDate, :leaveDate);');
+        $bindingParams = [
+            'company' => $company,
+            'position' => $position,
+            'startDate' => $startDate,
+            'leaveDate' => $leaveDate
+        ];
         return($query->execute());
     }
 }

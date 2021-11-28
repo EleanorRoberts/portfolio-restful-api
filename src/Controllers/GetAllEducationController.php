@@ -18,7 +18,7 @@ class GetAllEducationController extends Controller
 
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
-        $workExperience = $this->model->getAllEducation();
-        return $this->respondWithJson($response, $workExperience);
+        $education = $this->model->getAllEducation();
+        return $this->respondWithJson($response, $education);
     }
 }

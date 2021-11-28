@@ -3,22 +3,22 @@
 namespace App\Controllers;
 
 use App\Abstracts\Controller;
-use App\Models\HobbiesModel;
+use App\Models\AboutMeModel;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class GetAllHobbiesController extends Controller
+class GetAllAboutMeController extends Controller
 {
-    protected HobbiesModel $model;
+    protected AboutMeModel $model;
 
-    public function __construct(HobbiesModel $model)
+    public function __construct(AboutMeModel $model)
     {
         $this->model = $model;
     }
 
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
-        $hobbies = $this->model->getAllHobbies();
-        return $this->respondWithJson($response, $hobbies);
+        $aboutMe = $this->model->getAllAboutMe();
+        return $this->respondWithJson($response, $aboutMe);
     }
 }

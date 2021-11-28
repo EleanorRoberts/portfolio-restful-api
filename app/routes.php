@@ -12,6 +12,8 @@ return function (App $app) {
     $app->get('/projects', 'GetAllProjectsController');
     $app->get('/other-certifications', 'GetAllOtherCertificationsController');
     $app->get('/hobbies', 'GetAllHobbiesController');
+    $app->get('/about-me', 'GetAllAboutMeController');
+    $app->get('/about-me/{field}', 'GetOneAboutMeController');
 
 
 };

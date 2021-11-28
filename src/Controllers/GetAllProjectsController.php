@@ -18,7 +18,7 @@ class GetAllProjectsController extends Controller
 
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
-        $workExperience = $this->model->getAllProjects();
-        return $this->respondWithJson($response, $workExperience);
+        $projects = $this->model->getAllProjects();
+        return $this->respondWithJson($response, $projects);
     }
 }
