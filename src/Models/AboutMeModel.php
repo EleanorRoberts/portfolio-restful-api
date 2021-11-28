@@ -35,4 +35,38 @@ class AboutMeModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function addAboutMe(string $field, string $newValue): bool
+    {
+        $query = $this->db->prepare("ALTER TABLE `about_me` ADD :field varchar(1000);");
+        $attemptOne = ($query->execute(['field' => $field]));
+        $query = $this->db->prepare("INSERT INTO `about_me` (:field) VALUES (:newValue)");
+        $attemptTwo = ($query->execute(['field' => $field, 'newValue' => $newValue]));
+        return ($attemptOne && $attemptTwo);
+    }
+
+    public function editAboutMe(int $id, array $newData)
+    {
+//        $aboutMeFields = $this->getAboutMeFields();
+//        if (!in_array(strtolower(trim($newData['field'])), $aboutMeFields)) {
+//            return false;
+//        }
+        $mysql = "UPDATE `about_me` SET `" . $newData['field'] . "` = :newValue WHERE `id` = :id;";
+        $query = $this->db->prepare($mysql);
+        $bindingParams = [
+            'id' => $id,
+            'newValue' => $newData['newValue']
+        ];
+        return ($query->execute($bindingParams));
+    }
+
+    public function deleteAboutMe(int $id): bool
+    {
+        $mysql = "UPDATE `about_me` SET `deleted` = '1' WHERE `id` = :id;";
+        $query = $this->db->prepare($mysql);
+        $bindingParams = [
+            'id' => $id
+        ];
+        return ($query->execute($bindingParams));
+    }
 }

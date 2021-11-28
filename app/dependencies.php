@@ -47,12 +47,22 @@ return function (ContainerBuilder $containerBuilder) {
     $container['HobbiesModel'] = DI\factory('\App\Factories\Models\HobbiesModelFactory');
     $container['AboutMeModel'] = DI\factory('\App\Factories\Models\AboutMeModelFactory');
     // Controllers
+    // Work Experience
     $container['GetAllWorkExperienceController'] = DI\factory('\App\Factories\Controllers\GetAllWorkExperienceControllerFactory');
     $container['AddWorkExperienceController'] = DI\factory('\App\Factories\Controllers\AddWorkExperienceControllerFactory');
     $container['EditWorkExperienceController'] = DI\factory('\App\Factories\Controllers\EditWorkExperienceControllerFactory');
-    //
-    $container['GetAllEducationController'] = DI\factory('\App\Factories\Controllers\GetAllEducationControllerFactory');
+    $container['DeleteWorkExperienceController'] = DI\factory('\App\Factories\Controllers\DeleteWorkExperienceControllerFactory');
+    // Projects
     $container['GetAllProjectsController'] = DI\factory('\App\Factories\Controllers\GetAllProjectsControllerFactory');
+    $container['AddProjectController'] = DI\factory('\App\Factories\Controllers\AddProjectControllerFactory');
+    $container['EditProjectController'] = DI\factory('\App\Factories\Controllers\EditProjectControllerFactory');
+    $container['DeleteProjectController'] = DI\factory('\App\Factories\Controllers\DeleteProjectControllerFactory');
+    // Education
+    $container['GetAllEducationController'] = DI\factory('\App\Factories\Controllers\GetAllEducationControllerFactory');
+    $container['AddEducationController'] = DI\factory('\App\Factories\Controllers\AddEducationControllerFactory');
+    $container['EditEducationController'] = DI\factory('\App\Factories\Controllers\EditEducationControllerFactory');
+    $container['DeleteEducationController'] = DI\factory('\App\Factories\Controllers\DeleteEducationControllerFactory');
+
     $container['GetAllOtherCertificationsController'] = DI\factory('\App\Factories\Controllers\GetAllOtherCertificationsControllerFactory');
     $container['GetAllHobbiesController'] = DI\factory('\App\Factories\Controllers\GetAllHobbiesControllerFactory');
     $container['GetAllAboutMeController'] = DI\factory('\App\Factories\Controllers\GetAllAboutMeControllerFactory');
