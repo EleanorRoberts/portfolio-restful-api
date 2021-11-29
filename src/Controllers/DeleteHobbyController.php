@@ -20,7 +20,7 @@ class DeleteHobbyController extends Controller
     {
         $attempt = $this->model->deleteHobby($args['id']);
         if ($attempt) {
-            return $this->respondWithJson($response, ['Work experience removed!']);
+            return $this->respondWithJson($response, ['Hobby removed!']);
         }
         return $this->respondWithJson($response, ['Something broke :( Not removed'], 400);
     }

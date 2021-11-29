@@ -9,7 +9,7 @@ class DeleteHobbyControllerFactory
 {
     public function __invoke(ContainerInterface $container): DeleteHobbyController
     {
-        $model = $container->get('WorkExperienceModel');
+        $model = $container->get('HobbiesModel');
         return new DeleteHobbyController($model);
     }
 }

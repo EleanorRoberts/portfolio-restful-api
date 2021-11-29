@@ -20,7 +20,7 @@ class DeleteEducationController extends Controller
     {
         $attempt = $this->model->deleteEducation($args['id']);
         if ($attempt) {
-            return $this->respondWithJson($response, ['Work experience removed!']);
+            return $this->respondWithJson($response, ['Education removed!']);
         }
         return $this->respondWithJson($response, ['Something broke :( Not removed'], 400);
     }

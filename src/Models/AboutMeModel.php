@@ -45,16 +45,15 @@ class AboutMeModel
         return ($attemptOne && $attemptTwo);
     }
 
-    public function editAboutMe(int $id, array $newData)
+    public function editAboutMe(array $newData)
     {
 //        $aboutMeFields = $this->getAboutMeFields();
 //        if (!in_array(strtolower(trim($newData['field'])), $aboutMeFields)) {
 //            return false;
 //        }
-        $mysql = "UPDATE `about_me` SET `" . $newData['field'] . "` = :newValue WHERE `id` = :id;";
+        $mysql = "UPDATE `about_me` SET `" . $newData['field'] . "` = :newValue WHERE `id` = 1;";
         $query = $this->db->prepare($mysql);
         $bindingParams = [
-            'id' => $id,
             'newValue' => $newData['newValue']
         ];
         return ($query->execute($bindingParams));

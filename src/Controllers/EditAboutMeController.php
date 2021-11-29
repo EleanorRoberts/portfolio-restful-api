@@ -19,7 +19,8 @@ class EditAboutMeController extends Controller
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
         $data = $request->getParsedBody();
-        $attempt = $this->model->editAboutMe($args['id'], $data);
+        // Sort this out!
+        $attempt = $this->model->editAboutMe($data);
         if ($attempt) {
             return $this->respondWithJson($response, ['About me updated!']);
         }

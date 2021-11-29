@@ -4,7 +4,7 @@
 **Things to Do**
 -
 - Add, Edit and Delete functionalities for all but WE
-- Fix edit functionality
+- Fix editAboutMeController functionality
 - Unit testing
 - Validation
 - ^Format message?

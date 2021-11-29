@@ -20,7 +20,7 @@ class DeleteProjectController extends Controller
     {
         $attempt = $this->model->deleteProject($args['id']);
         if ($attempt) {
-            return $this->respondWithJson($response, ['Work experience removed!']);
+            return $this->respondWithJson($response, ['Project removed!']);
         }
         return $this->respondWithJson($response, ['Something broke :( Not removed'], 400);
     }

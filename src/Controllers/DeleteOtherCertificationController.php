@@ -20,7 +20,7 @@ class DeleteOtherCertificationController extends Controller
     {
         $attempt = $this->model->deleteOtherCertification($args['id']);
         if ($attempt) {
-            return $this->respondWithJson($response, ['Work experience removed!']);
+            return $this->respondWithJson($response, ['Other certification removed!']);
         }
         return $this->respondWithJson($response, ['Something broke :( Not removed'], 400);
     }

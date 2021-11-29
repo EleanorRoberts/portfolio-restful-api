@@ -29,9 +29,9 @@ return function (App $app) {
     $app->delete('/other-certifications/{id}', 'DeleteOtherCertificationsController');
     // Hobbies
     $app->get('/hobbies', 'GetAllHobbiesController');
-    $app->post('/hobbies', 'AddHobbiesController');
-    $app->put('/hobbies/{id}', 'EditHobbiesController');
-    $app->delete('/hobbies/{id}', 'DeleteHobbiesController');
+    $app->post('/hobbies', 'AddHobbyController');
+    $app->put('/hobbies/{id}', 'EditHobbyController');
+    $app->delete('/hobbies/{id}', 'DeleteHobbyController');
     // About Me
     $app->get('/about-me', 'GetAllAboutMeController');
     $app->post('/about-me', 'AddAboutMeController');

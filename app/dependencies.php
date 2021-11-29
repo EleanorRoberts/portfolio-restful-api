@@ -62,10 +62,21 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AddEducationController'] = DI\factory('\App\Factories\Controllers\AddEducationControllerFactory');
     $container['EditEducationController'] = DI\factory('\App\Factories\Controllers\EditEducationControllerFactory');
     $container['DeleteEducationController'] = DI\factory('\App\Factories\Controllers\DeleteEducationControllerFactory');
-
+    // Other Certifications
     $container['GetAllOtherCertificationsController'] = DI\factory('\App\Factories\Controllers\GetAllOtherCertificationsControllerFactory');
+    $container['AddOtherCertificationController'] = DI\factory('\App\Factories\Controllers\AddOtherCertificationControllerFactory');
+    $container['EditOtherCertificationController'] = DI\factory('\App\Factories\Controllers\EditOtherCertificationControllerFactory');
+    $container['DeleteOtherCertificationController'] = DI\factory('\App\Factories\Controllers\DeleteOtherCertificationControllerFactory');
+    // Hobbies
     $container['GetAllHobbiesController'] = DI\factory('\App\Factories\Controllers\GetAllHobbiesControllerFactory');
+    $container['AddHobbyController'] = DI\factory('\App\Factories\Controllers\AddHobbyControllerFactory');
+    $container['EditHobbyController'] = DI\factory('\App\Factories\Controllers\EditHobbyControllerFactory');
+    $container['DeleteHobbyController'] = DI\factory('\App\Factories\Controllers\DeleteHobbyControllerFactory');
+    // About Me
     $container['GetAllAboutMeController'] = DI\factory('\App\Factories\Controllers\GetAllAboutMeControllerFactory');
+    $container['AddAboutMeController'] = DI\factory('\App\Factories\Controllers\AddAboutMeControllerFactory');
+    $container['EditAboutMeController'] = DI\factory('\App\Factories\Controllers\EditAboutMeControllerFactory');
+    $container['DeleteAboutMeController'] = DI\factory('\App\Factories\Controllers\DeleteAboutMeControllerFactory');
     $container['GetOneAboutMeController'] = DI\factory('\App\Factories\Controllers\GetOneAboutMeControllerFactory');
 
     $containerBuilder->addDefinitions($container);
