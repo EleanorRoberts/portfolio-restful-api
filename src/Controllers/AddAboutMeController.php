@@ -19,7 +19,7 @@ class AddAboutMeController extends Controller
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
         $data = $request->getParsedBody();
-        $attempt = $this->model->addAboutMe($data['company'], $data['position'], $data['startDate'], $data['leaveDate']);
+        $attempt = $this->model->addAboutMe($data['name'], $data['description']);
         if ($attempt) {
             return $this->respondWithJson($response, ['About me added!']);
         }

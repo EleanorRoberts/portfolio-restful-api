@@ -9,7 +9,7 @@ class EditOtherCertificationControllerFactory
 {
     public function __invoke(ContainerInterface $container): EditOtherCertificationController
     {
-        $model = $container->get('OtherCertifiationsModel');
+        $model = $container->get('OtherCertificationsModel');
         return new EditOtherCertificationController($model);
     }
 }

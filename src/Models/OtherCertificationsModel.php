@@ -20,12 +20,11 @@ class OtherCertificationsModel
         return $query->fetchAll();
     }
 
-    public function addOtherCertification(int $id, string $name, string $certifier, string $date_achieved): bool
+    public function addOtherCertification(string $name, string $certifier = null, string $date_achieved = null): bool
     {
-        $mysql = "INSERT INTO `other_certifications` (`id`, `name`,`certifier`,`date_achieved`) VALUES (:id, :name, :certifier, :date_achieved);";
+        $mysql = "INSERT INTO `other_certifications` (`name`,`certifier`,`date_achieved`) VALUES (:name, :certifier, :date_achieved);";
         $query = $this->db->prepare($mysql);
         $bindingParams = [
-            'id' => $id,
             'name' => $name,
             'certifier' => $certifier,
             'date_achieved' => $date_achieved

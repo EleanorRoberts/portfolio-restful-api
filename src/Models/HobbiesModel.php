@@ -30,17 +30,17 @@ class HobbiesModel
         return ($query->execute($bindingParams));
     }
 
-    public function editHobby(int $id, array $newData)
+    public function editHobby(int $id, array $newData): bool
     {
 //        $hobbyFields = $this->getHobbyFields();
 //        if (!in_array(strtolower(trim($newData['field'])), $hobbyFields)) {
 //            return false;
 //        }
-        $mysql = "UPDATE `hobbies` SET `" . $newData['field'] . "` = :newValue WHERE `id` = :id;";
+        $mysql = "UPDATE `hobbies` SET `name` = :name WHERE `id` = :id;";
         $query = $this->db->prepare($mysql);
         $bindingParams = [
             'id' => $id,
-            'newValue' => $newData['newValue']
+            'name' => $newData['name']
         ];
         return ($query->execute($bindingParams));
     }

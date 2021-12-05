@@ -21,10 +21,12 @@ class GetOneAboutMeController extends Controller
         $fields = $this->model->getAboutMeFields();
         $arrayOfFields = [];
         foreach ($fields as $field) {
-            $arrayOfFields[] = $field['Field'];
+            if ($field['name'] !== 'id') {
+                $arrayOfFields[] = $field['name'];
+            }
         }
-        if (in_array($args['field'], $arrayOfFields)) {
-            $aboutMe = $this->model->getOneAboutMe($args['field']);
+        if (in_array($args['name'], $arrayOfFields)) {
+            $aboutMe = $this->model->getOneAboutMe($args['name']);
             return $this->respondWithJson($response, $aboutMe);
         }
         return $this->respondWithJson($response, [], 404);

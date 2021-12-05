@@ -9,7 +9,7 @@ class AddEducationControllerFactory
 {
     public function __invoke(ContainerInterface $container): AddEducationController
     {
-        $model = $container->get('ProjectModel');
+        $model = $container->get('EducationModel');
         return new AddEducationController($model);
     }
 }

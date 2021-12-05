@@ -20,7 +20,7 @@ class EducationModel
         return $query->fetchAll();
     }
 
-    public function addEducation(string $level, string $institution, string $grade, string $start_date, string $end_date): bool
+    public function addEducation(string $level, string $institution, string $grade = '', string $start_date = NULL, string $end_date = NULL): bool
     {
         $mysql = "INSERT INTO `education` (`level`,`institution`,`grade`,`start_date`, `end_date`) VALUES (:level, :institution, :grade, :start_date, :end_date);";
         $query = $this->db->prepare($mysql);

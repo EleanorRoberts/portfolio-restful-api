@@ -20,7 +20,7 @@ class WorkExperienceModel
         return $query->fetchAll();
     }
 
-    public function addWorkExperience(string $company, string $position, string $startDate, string $leaveDate): bool
+    public function addWorkExperience(string $company, string $position, string $startDate = null, string $leaveDate = null): bool
     {
         $mysql = "INSERT INTO `work_experience` (`company`,`position`,`start_date`,`leave_date`) VALUES (:company, :position, :start_date, :leave_date);";
         $query = $this->db->prepare($mysql);
@@ -39,11 +39,10 @@ class WorkExperienceModel
 //        if (!in_array(strtolower(trim($newData['field'])), $workExperienceFields)) {
 //            return false;
 //        }
-        $mysql = "UPDATE `work_experience` SET :field = :newValue WHERE `id` = :id;";
+        $mysql = "UPDATE `work_experience` SET `" . $newData['field'] . "` = :newValue WHERE `id` = :id;";
         $query = $this->db->prepare($mysql);
         $bindingParams = [
             'id' => $id,
-            'field' => $newData['field'],
             'newValue' => $newData['newValue']
         ];
         return ($query->execute($bindingParams));

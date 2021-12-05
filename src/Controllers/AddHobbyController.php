@@ -21,7 +21,7 @@ class AddHobbyController extends Controller
         $data = $request->getParsedBody();
         $attempt = $this->model->addHobby($data['name']);
         if ($attempt) {
-            return $this->respondWithJson($response, ['Work experience added!']);
+            return $this->respondWithJson($response, ['Hobby added!']);
         }
         return $this->respondWithJson($response, ['It broke :( Not added'], 400);
     }

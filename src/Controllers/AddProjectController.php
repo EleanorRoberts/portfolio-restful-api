@@ -21,7 +21,7 @@ class AddProjectController extends Controller
         $data = $request->getParsedBody();
         $attempt = $this->model->addProject($data['name'], $data['about'], $data['githubLink'], $data['liveVersion']);
         if ($attempt) {
-            return $this->respondWithJson($response, ['Work experience added!']);
+            return $this->respondWithJson($response, ['Project added!']);
         }
         return $this->respondWithJson($response, ['It broke :( Not added'], 400);
     }

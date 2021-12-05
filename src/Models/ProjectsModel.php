@@ -20,7 +20,7 @@ class ProjectsModel
         return $query->fetchAll();
     }
 
-    public function addProject(string $name, string $about, string $githubLink, string $liveVersion): bool
+    public function addProject(string $name, string $about, string $githubLink = null, string $liveVersion = null): bool
     {
         $mysql = "INSERT INTO `projects` (`name`,`about`,`github_link`,`live_version`) VALUES (:name, :about, :github_link, :live_version);";
         $query = $this->db->prepare($mysql);

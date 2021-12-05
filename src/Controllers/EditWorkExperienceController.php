@@ -19,7 +19,7 @@ class EditWorkExperienceController extends Controller
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
         $data = $request->getParsedBody();
-        $attempt = $this->model->editWorkExperience($args['id'], [$data]);
+        $attempt = $this->model->editWorkExperience($args['id'], $data);
         if ($attempt) {
             return $this->respondWithJson($response, ['Work experience updated!']);
         }

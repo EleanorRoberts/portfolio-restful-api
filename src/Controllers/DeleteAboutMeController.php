@@ -7,7 +7,7 @@ use App\Models\AboutMeModel;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class EditAboutMeController extends Controller
+class DeleteAboutMeController extends Controller
 {
     protected AboutMeModel $model;
 
@@ -18,12 +18,10 @@ class EditAboutMeController extends Controller
 
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
-        $data = $request->getParsedBody();
-        // Sort this out!
-        $attempt = $this->model->editAboutMe($args['id'], $data);
+        $attempt = $this->model->deleteAboutMe($args['id']);
         if ($attempt) {
-            return $this->respondWithJson($response, ['About me updated!']);
+            return $this->respondWithJson($response, ['About me removed!']);
         }
-        return $this->respondWithJson($response, ['Something broke :( Not updated', $attempt], 400);
+        return $this->respondWithJson($response, ['Something broke :( Not removed'], 400);
     }
 }

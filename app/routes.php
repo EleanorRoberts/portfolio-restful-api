@@ -24,9 +24,9 @@ return function (App $app) {
     $app->delete('/education/{id}', 'DeleteEducationController');
     // Other Certifications
     $app->get('/other-certifications', 'GetAllOtherCertificationsController');
-    $app->post('/other-certifications', 'AddOtherCertificationsController');
-    $app->put('/other-certifications/{id}', 'EditOtherCertificationsController');
-    $app->delete('/other-certifications/{id}', 'DeleteOtherCertificationsController');
+    $app->post('/other-certifications', 'AddOtherCertificationController');
+    $app->put('/other-certifications/{id}', 'EditOtherCertificationController');
+    $app->delete('/other-certifications/{id}', 'DeleteOtherCertificationController');
     // Hobbies
     $app->get('/hobbies', 'GetAllHobbiesController');
     $app->post('/hobbies', 'AddHobbyController');
@@ -36,8 +36,8 @@ return function (App $app) {
     $app->get('/about-me', 'GetAllAboutMeController');
     $app->post('/about-me', 'AddAboutMeController');
     $app->put('/about-me/{id}', 'EditAboutMeController');
-//    $app->delete('/about-me/{id}', 'DeleteAboutMeController');
-    $app->get('/about-me/{field}', 'GetOneAboutMeController');
+    $app->delete('/about-me/{id}', 'DeleteAboutMeController');
+    $app->get('/about-me/{name}', 'GetOneAboutMeController');
 
 
 };
