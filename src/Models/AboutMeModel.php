@@ -44,7 +44,7 @@ class AboutMeModel
 
     public function editAboutMe(int $id, array $newData)
     {
-//        $aboutMeFields = $this->getAboutMeFields();
+        $aboutMeFields = $this->getAboutMeFields();
 //        if (!in_array(strtolower(trim($newData['field'])), $aboutMeFields)) {
 //            return false;
 //        }
