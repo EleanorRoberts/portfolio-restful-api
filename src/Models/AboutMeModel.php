@@ -15,7 +15,7 @@ class AboutMeModel
 
     public function getAllAboutMe(): array
     {
-        $query = $this->db->prepare('SELECT `name`, `description` FROM `about_me`;');
+        $query = $this->db->prepare('SELECT `name`, `description` FROM `about_me` WHERE `deleted` = 0;');
         $query->execute();
         return $query->fetchAll();
     }

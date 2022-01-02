@@ -15,7 +15,7 @@ class EducationModel
 
     public function getAllEducation(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `level`,`institution`,`grade`,`start_date`, `end_date` FROM `education`;');
+        $query = $this->db->prepare('SELECT `id`, `level`,`institution`,`grade`,`start_date`, `end_date` FROM `education` WHERE `deleted` = 0;');
         $query->execute();
         return $query->fetchAll();
     }

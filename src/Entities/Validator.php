@@ -52,7 +52,7 @@ class Validator
     }
 
     public static function validateAddHobby(array $data): bool {
-        return self::validateShortString($data['hobby']);
+        return self::validateShortString($data['name']);
     }
 
     public static function validateEditHobby(array $data): bool {
@@ -113,7 +113,7 @@ class Validator
 
     public static function validateAddWorkExperience(array $data): bool {
         $companyValidation = self::validateShortString($data['company']);
-        $positionValidation = self::validateLongString($data['position']);
+        $positionValidation = self::validateShortString($data['position']);
         if (isset($data['startDate'])) {
             $startDateValidation = self::validateDate($data['startDate']);
         }
@@ -144,7 +144,7 @@ class Validator
 
     protected static function validateShortString(string $string): bool {
         $length = strlen($string);
-        return 5 <= $length && $length <= 50;
+        return 0 <= $length && $length <= 50;
     }
 
     protected static function validateLongString(string $string): bool {
@@ -158,7 +158,7 @@ class Validator
     }
 
     protected static function validateUrl(string $date): bool {
-        $regex = '/(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)(?:\.(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)*(?:\.[a-z\x{00a1}-\x{ffff}]{2,6}))(?::\d+)?(?:[^\s]*)?$/';
+        $regex = '%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)(?:\.(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)*(?:\.[a-z\x{00a1}-\x{ffff}]{2,6}))(?::\d+)?(?:[^\s]*)?$%iu';
         return preg_match($regex, $date);
     }
 }

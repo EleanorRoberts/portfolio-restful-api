@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.6.4-MariaDB-1:10.6.4+maria~focal)
 # Database: CV
-# Generation Time: 2021-11-29 10:15:35 +0000
+# Generation Time: 2021-12-11 01:19:38 +0000
 # ************************************************************
 
 
@@ -28,17 +28,20 @@ DROP TABLE IF EXISTS `about_me`;
 
 CREATE TABLE `about_me` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `about_me` varchar(1000) DEFAULT NULL,
-  `io_academy` varchar(1000) DEFAULT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `description` varchar(600) DEFAULT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `about_me` WRITE;
 /*!40000 ALTER TABLE `about_me` DISABLE KEYS */;
 
-INSERT INTO `about_me` (`id`, `about_me`, `io_academy`)
+INSERT INTO `about_me` (`id`, `name`, `description`, `deleted`)
 VALUES
-	(1,'I am a friendly and passionate software developer, looking for a challenging and innovative career in the exciting world of tech. I am currently studying at the EyUp Skills coding academy – a sixteen week programming bootcamp run in partnership with the award-winning iO Academy – and am due to graduate in mid-December. My aptitude for technology and computers originally stemmed from my adoration of gaming, and my gentle obsession over logic puzzles and my time with iO Academy has allowed me to fully explore and reignite my enthusiasm.','I am currently studying software development at iO Academy, which includes the creation of many projects both individually and in a scrum team. I’m personally proud of the ones below, but please see my portfolio for the rest.');
+	(1,'about-me','I am a friendly and passionate software developer, looking for a challenging and innovative career in the exciting world of tech. I am currently studying at the EyUp Skills coding academy – a sixteen week programming bootcamp run in partnership with the award-winning iO Academy – and am due to graduate in mid-December. My aptitude for technology and computers originally stemmed from my adoration of gaming, and my gentle obsession over logic puzzles and my time with iO Academy has allowed me to fully explore and reignite my enthusiasm.',0),
+	(2,'io-academy','I am currently studying software development at iO Academy, which includes the creation of many projects both individually and in a scrum team. I’m personally proud of the ones below, but please see my portfolio for the rest.',0),
+	(4,'testing','test',1);
 
 /*!40000 ALTER TABLE `about_me` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -66,7 +69,8 @@ LOCK TABLES `education` WRITE;
 INSERT INTO `education` (`id`, `level`, `institution`, `grade`, `start_date`, `end_date`, `deleted`)
 VALUES
 	(1,'A Levels','High Storrs School',NULL,'2010-09-01','2012-05-01',0),
-	(2,'BSc Forensic Science','University of West London','First Class Honours','2015-09-01','2018-05-01',0);
+	(2,'BSc Forensic Science','University of West London','First Class Honours','2015-09-01','2018-05-01',0),
+	(3,'test','testing','potato','2020-12-12','2020-12-12',1);
 
 /*!40000 ALTER TABLE `education` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -95,7 +99,8 @@ VALUES
 	(4,'Singing',0),
 	(5,'Piano',0),
 	(6,'Crosswords',0),
-	(7,'Logic puzzles',0);
+	(7,'Logic puzzles',0),
+	(8,'potato',1);
 
 /*!40000 ALTER TABLE `hobbies` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -122,7 +127,8 @@ INSERT INTO `other_certifications` (`id`, `name`, `certifier`, `date_achieved`, 
 VALUES
 	(1,'Scrum Master Certification','Scrum Alliance','2021-09-01',0),
 	(2,'Piano Grade 4',NULL,NULL,0),
-	(3,'Singing Grade 4',NULL,NULL,0);
+	(3,'Singing Grade 4',NULL,NULL,0),
+	(4,'potato',NULL,NULL,1);
 
 /*!40000 ALTER TABLE `other_certifications` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -148,10 +154,11 @@ LOCK TABLES `projects` WRITE;
 
 INSERT INTO `projects` (`id`, `name`, `about`, `github_link`, `live_version`, `deleted`)
 VALUES
-	(1,'Dinosaur Listing App','Fetching information from a MySQL database containing Dinosaurs and related information, we created an PHP OOP application to view the collection. This included designing an OOP architecture, then utilising Bootstrap UI and SASS to modify the front-end of the application. In particular, I worked on the code implementing a ‘More info’ page for each dinosaur, including functionality, Bootstrap UI and the related unit testing in PHPUnit for this page.',NULL,NULL,0),
-	(2,'iO Aptitude Test','In this project we began to rebuild the aptitude test application, an existing legacy project, using JavaScript and React, which will be used in the future to test possible applicants for iO Academy. This project utilised a pre-built RESTful API as well as Bootstrap UI.',NULL,NULL,0),
-	(3,'Capybara Canvas',NULL,NULL,NULL,0),
-	(4,'Academy Portal',NULL,NULL,NULL,0);
+	(1,'Dinosaur Listing App','Fetching information from a MySQL database containing Dinosaurs and related information, we created an PHP OOP application to view the collection. This included designing an OOP architecture, then utilising Bootstrap UI and SASS to modify the front-end of the application. In particular, I worked on the code implementing a ‘More info’ page for each dinosaur, including functionality, Bootstrap UI and the related unit testing in PHPUnit for this page.','https://github.com/iO-Academy/2021-aug-dinos-listing',NULL,0),
+	(2,'iO Aptitude Test','In this project we began to rebuild the aptitude test application, an existing legacy project, using JavaScript and React, which will be used in the future to test possible applicants for iO Academy. This project utilised a pre-built RESTful API as well as Bootstrap UI.','https://github.com/iO-Academy/aptitude-test-react',NULL,0),
+	(3,'Capybara Canvas',NULL,'https://github.com/iO-Academy/2021-aug-jsPaint',NULL,0),
+	(4,'Academy Portal',NULL,'https://github.com/iO-Academy/AcademyPortal',NULL,0),
+	(5,'potato','testing','','',1);
 
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -184,7 +191,7 @@ VALUES
 	(4,'Twinkl Ltd, Sheffield, UK','Customer Service/Administrator','2014-08-01','2015-06-01',NULL,0),
 	(5,'Various Companies (Whilst Travelling)','Door to Door Telesales/Waitress/Fruit Harvester/Rainforest Reforestation','2013-08-01','2014-07-01',NULL,0),
 	(6,'The Stags Head, Sheffield, UK','Bartender/Waitress','2012-04-01','2013-08-01',NULL,0),
-	(7,'Potato','Crisp Eater','2020-12-12','2021-12-12',NULL,1);
+	(8,'test','the code','2020-12-12',NULL,NULL,1);
 
 /*!40000 ALTER TABLE `work_experience` ENABLE KEYS */;
 UNLOCK TABLES;

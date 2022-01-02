@@ -20,6 +20,7 @@ class AddEducationController extends Controller
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
         $data = $request->getParsedBody();
+        var_dump($data);
         if (Validator::validateAddEducation($data)) {
             $attempt = $this->model->addEducation($data['level'], $data['institution'], ($data['grade'] ?? null), ($data['startDate'] ?? null), ($data['endDate'] ?? null));
             if ($attempt) {

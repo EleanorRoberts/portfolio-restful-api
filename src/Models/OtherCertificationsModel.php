@@ -15,14 +15,14 @@ class OtherCertificationsModel
 
     public function getAllOtherCertifications(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `name`,`certifier`,`date_achieved` FROM `other_certifications`;');
+        $query = $this->db->prepare('SELECT `id`, `name`,`certifier`,`date_achieved` FROM `other_certifications` WHERE `deleted` = 0;');
         $query->execute();
         return $query->fetchAll();
     }
 
     public function addOtherCertification(string $name, string $certifier = null, string $date_achieved = null): bool
     {
-        $mysql = "INSERT INTO `other_certifications` (`name`,`certifier`,`date_achieved`) VALUES (:name, :certifier, :date_achieved);";
+        $mysql = 'INSERT INTO `other_certifications` (`name`,`certifier`,`date_achieved`) VALUES (:name, :certifier, :date_achieved);';
         $query = $this->db->prepare($mysql);
         $bindingParams = [
             'name' => $name,

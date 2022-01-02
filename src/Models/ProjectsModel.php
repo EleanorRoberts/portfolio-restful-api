@@ -15,14 +15,14 @@ class ProjectsModel
 
     public function getAllProjects(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `name`,`about`,`github_link`,`live_version` FROM `projects`;');
+        $query = $this->db->prepare('SELECT `id`, `name`,`about`,`github_link`,`live_version` FROM `projects` WHERE `deleted` = 0;');
         $query->execute();
         return $query->fetchAll();
     }
 
     public function addProject(string $name, string $about, string $githubLink = null, string $liveVersion = null): bool
     {
-        $mysql = "INSERT INTO `projects` (`name`,`about`,`github_link`,`live_version`) VALUES (:name, :about, :github_link, :live_version);";
+        $mysql = 'INSERT INTO `projects` (`name`,`about`,`github_link`,`live_version`) VALUES (:name, :about, :github_link, :live_version);';
         $query = $this->db->prepare($mysql);
         $bindingParams = [
             'name' => $name,
@@ -33,7 +33,7 @@ class ProjectsModel
         return ($query->execute($bindingParams));
     }
 
-    public function editProject(int $id, array $newData)
+    public function editProject(int $id, array $newData): bool
     {
         $projectFields = $this->getProjectFields();
 //        if (!in_array(strtolower(trim($newData['field'])), $projectFields)) {

@@ -136,8 +136,8 @@ class ValidatorTest extends TestCase
         $testData = [
             'name' => 'Potato',
             'about' => 'I love potatoes they are a wonderful vegetable and they taste so good is so many varied ways',
-            'githubLink' => 'wwww.github.co.uk/Nova-is-the-bestest?yes-she-is',
-            'liveVersion' => 'wwww.github.co.uk/Nova-is-the-bestest?yes-she-is'
+            'githubLink' => 'www.github.co.uk/Nova-is-the-bestest?yes-she-is',
+            'liveVersion' => 'www.github.co.uk/Nova-is-the-bestest?yes-she-is'
             ];
         $attempt = Validator::validateAddProject($testData);
         $this->assertEquals(true, $attempt);
@@ -165,7 +165,7 @@ class ValidatorTest extends TestCase
             'position' => 'Potato Farmer',
             'startDate' => '2020-01-01',
             'leaveDate' => '2022-12-22',
-            'about' => 'Potatoes are very good I like them a lot I hope to one day have a potato farm'
+            'about' => 'Potatoes are very good I like them a lot I hope to one day have a potato farm because they are so versatile and trustworthy'
         ];
         $attempt = Validator::validateAddWorkExperience($testData);
         $this->assertEquals(true, $attempt);

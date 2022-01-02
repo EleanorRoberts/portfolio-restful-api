@@ -15,7 +15,7 @@ class HobbiesModel
 
     public function getAllHobbies(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `name` FROM `hobbies`;');
+        $query = $this->db->prepare('SELECT `id`, `name` FROM `hobbies` WHERE `deleted` = 0;');
         $query->execute();
         return $query->fetchAll();
     }
