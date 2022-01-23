@@ -10,32 +10,62 @@
 
 **Things to Do**
 -
-- Add, Edit and Delete functionalities for all but WE
-- Fix editAboutMeController functionality
+- Add, Edit and Delete functionalities for all but WE??
+- Fix editAboutMeController functionality??
 - Unit testing
 - Validation
 - Format message response
   - replace in each controller so standard response gets given. Use Utility Class
 
 
-# Portfolio RESTful API Documentation
+# Portfolio RESTful API Routes
 
-Create a MySQL database called CV.
-Import db/portfolio_db.sql.
 
-**Add About Me**
-----
-Adds a single new about me entry into the about_me table
+**About Me**
+---
 
-* URL: `/about-me`
+URL: `/about-me`
 
-* **Method:**
+---
 
-  `POST`
+`GET`
 
+* Gets all about me entries from the about_me table, not including deleted entries.
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Retrieved all about me!",
+    "data": {
+       "name": "nova",
+       "description": "Nova is my beautiful poochon puppy, and she is the light of my life."
+       }
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/about-me', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+--- 
+
+`POST`
+* Adds a single new about me entry to the about_me table.
 * **Data Params**
-
-  **Required:**
 
 ```javascript
 {
@@ -81,38 +111,145 @@ fetch('http://localhost:3000/about-me', {
 })
   ```
 
-**Add Education**
-----
-Adds a single new education entry into the education table
+---
 
-* URL: `/education`
+URL: `/about-me/{id}`
 
-* **Method:**
+---
 
-  `POST`
+`PUT`
+
+---
+
+`DELETE`
+
+- Deletes a single about me entry in the about_me table.
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "About me removed!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something broke :( Not removed"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/work-experience/5', {
+    method: 'DELETE',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+---
+
+URL: `/about-me/{name}`
+
+---
+
+`GET`
+
+* Gets one about me entry from the about_me table, based on the about me name.
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Retrieved about me!",
+    "data": {
+    "name": "puppy",
+    "description": "Puppies are magnificent, they will cheer you up beyond belief."
+    }
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/about-me/puppy', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+---
+
+**Education**
+---
+
+URL: `/education`
+
+---
+
+`GET`
+
+* Gets all education entries from the education table, not including deleted entries.
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Retrieved all education!",
+    "data": [{
+    "id": 1
+    "level": "A Levels",
+    "institution": "Nova's Magical Institution of Puppies",
+    "grade": null,
+    "startDate": "2020-12-01",
+    "endDate": "2022-01-31"
+    }, ...]
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/about-me', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+---
+
+`POST`
 
 * **Data Params**
 
-  **Required:**
-
 ```javascript
 {
     "level": [string],
-    "institution": [string]
-};
-  ```
-
-  **Including optional:**
-
-```javascript
-{
-    "level": [string],
-    "institution": [string],
+    "institution": [string], 
     "grade": [string],
     "startDate": [string] (date format: YYYY-MM-DD),
     "endDate": [string] (date format: YYYY-MM-DD)
 };
   ```
+  _*grade, startDate and endDate are all optional parameters. Default value null._
 
 * **Success Response:**
 
@@ -154,19 +291,91 @@ fetch('http://localhost:3000/education', {
 })
   ```
 
-**Add Hobby**
-----
-Adds a single new hobby entry into the hobby table
+---
 
-* URL: `/hobbies`
+URL: `/education/{id}`
 
-* **Method:**
+---
 
-  `POST`
+`PUT`
 
+---
+
+`DELETE`
+
+- Deletes a single education entry in the education table.
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Education removed!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something broke :( Not removed"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/education/12', {
+    method: 'DELETE',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+---
+
+**Hobbies**
+---
+
+URL: `/hobbies`
+
+---
+
+`GET`
+
+* Gets all hobby entries from the hobbies table, not including deleted entries.
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Retrieved all education!",
+    "data": [{
+    "id": 1
+    "name": "Brushing Nova"
+    }, ...]
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/hobbies', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+---
+
+`POST`
+* Adds a single hobby entry into the hobbies table.
 * **Data Params**
-
-  **Required:**
 
 ```javascript
 {
@@ -210,28 +419,94 @@ fetch('http://localhost:3000/hobbies', {
 })
   ```
 
-**Add Other Certification**
-----
-Adds a single new other certification entry into the other certifications table
+---
 
-* URL: `/other-certification`
+URL: `/hobbies/{id}`
 
-* **Method:**
+---
 
-  `POST`
+`PUT`
 
-* **Data Params**
+---
 
-  **Required:**
+`DELETE`
+
+- Deletes a single hobby entry in the hobbies table.
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Hobby removed!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something broke :( Not removed"
+    }`
+
+* **Sample Call:**
 
 ```javascript
-{
-    "name": [string],
-    "certifier": [string]
-};
+fetch('http://localhost:3000/hobbies/1', {
+    method: 'DELETE',
+    headers: {'Content-Type': 'application/json'}
+})
   ```
 
-**Including optional:**
+---
+
+**Other Certifications**
+---
+
+URL: `/other-certifications`
+
+---
+
+`GET`
+
+* Gets all other certification entries from the other_certifications table, not including deleted entries.
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Retrieved all other certifications!",
+    "data": [{
+    "id": 1
+    "name": "Puppy Training",
+    "certifier": "Nova the Poochon",
+    "date_achieved": "2022-08-28"
+    }, ...]
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/other-certifications', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+---
+
+`POST`
+
+* Adds a single new other certification entry into the other_certifications table
+* **Data Params**
 
 ```javascript
 {
@@ -278,29 +553,96 @@ fetch('http://localhost:3000/other-certifications', {
     })
 })
   ```
+_*dateAchieved is an optional parameters. Default value null._
 
-**Add Project**
-----
-Adds a single new project entry into the projects table
+---
 
-* URL: `/projects`
+URL: `/other-certifications/{id}`
 
-* **Method:**
+---
 
-  `POST`
+`PUT`
 
-* **Data Params**
+---
 
-  **Required:**
+`DELETE`
+
+- Deletes a single other certification entry in the other_certifications table.
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Other certification removed!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something broke :( Not removed"
+    }`
+
+* **Sample Call:**
 
 ```javascript
-{
-    "name": [string],
-    "about": [string]
-};
+fetch('http://localhost:3000/other-certifications/22', {
+    method: 'DELETE',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+---
+
+**Projects**
+----
+
+URL: `/projects`
+
+---
+
+`GET`
+
+* Gets all project entries from the projects table, not including deleted entries.
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Retrieved all projects!",
+    "data": [{
+    "id": 1
+    "name": "Pet the Puppy",
+    "about": "In this project I learnt how to pet Nova in the appropriately loving manner, from the master of cuddles herself.",
+    "githubLink": "https://www.instagram.com/nova.and.crew, https://www.instagram.com/p/CYFLT7mMUQk/",
+    "liveVersion": "https://www.instagram.com/p/CTVJmpisqTQ/"
+    }, ...]
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/projects', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+})
   ```
 
-**Including optional:**
+---
+
+`POST`
+
+* Adds a single new project entry into the projects table
+* **Data Params**
 
 ```javascript
 {
@@ -310,6 +652,10 @@ Adds a single new project entry into the projects table
     "liveVersion": [string]
 };
   ```
+_*githubLink and liveVersion are optional parameters. Default value null._
+
+_**two entries can be added to githubLink, to account for applications with a separate front-end and back-end._
+
 
 * **Success Response:**
 
@@ -349,48 +695,181 @@ fetch('http://localhost:3000/projects', {
     })
 })
   ```
-Note: two entries can be added to GitHub links, to account for applications with a separate front-end and back-end.
 
-///////
+---
 
-**Get All Markers**
-----
-Returns an array of all markers currently in the database.
+URL: `/projects/{id}`
 
-* URL: `/markers`
+---
 
-* **Method:**
+`PUT`
 
-  `GET`
+---
 
+`DELETE`
+
+- Deletes a single project entry in the projects table.
 * **Success Response:**
 
   * **Code:** 201 <br />
-    **Content:**
-  *  `{
-     success: true,
-     message: 'Successfully found markers',
-     data: [{
-     walkName: 'Novas Walk',
-     markersObject: { lat: 8.1213, lng: -14.529 },
-     id: new ObjectId("XXX")
-     }`
+    **Content:** `{
+    "success": true,
+    "message": "Project removed!"
+    }`
 
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `{
-    success: false,
-    message: 'No markers returned :(',
-    data: []
+    "success": false,
+    "message": "Something broke :( Not removed"
     }`
-
 
 * **Sample Call:**
 
 ```javascript
-fetch('http://localhost:3000/markers', {
+fetch('http://localhost:3000/projects/2', {
+    method: 'DELETE',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+---
+
+**Work Experience**
+----
+
+URL: `/work-experience`
+
+---
+
+`GET`
+
+* Gets all work experience entries from the work_experience table, not including deleted entries.
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Retrieved all work experience!",
+    "data": [{
+    "id": 1
+    "company": "Nova's Sausages Ltd",
+    "position": "Lowly Dog Owner",
+    "start_date": "2020-08-28",
+    "leave_date": "2024-12-21",
+    "about": null
+    }, ...]
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/work-experience', {
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
 })
   ```
+
+---
+
+`POST`
+
+* Adds a single new work experience entry into the work_experience table
+* **Data Params**
+
+```javascript
+{
+    "company": [string],
+    "position": [string],
+    "startDate": [string] (date format: YYYY-MM-DD),
+    "endDate": [string] (date format: YYYY-MM-DD)
+};
+  ```
+_*startDate and endDate are optional parameters. Default value null._
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "New work experience added!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Validation failed :( Check your input!"
+    }`
+
+  OR
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/work-experience', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      "company": "Nova's Sausages Ltd",
+      "position": "Lowly Dog Owner",
+      "startDate": "2020-08-28"
+    })
+})
+  ```
+
+---
+
+URL: `/work-experience/{id}`
+
+---
+
+`PUT`
+
+---
+
+`DELETE`
+
+- Deletes a single work experience entry in the work_experience table.
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Work experience removed!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something broke :( Not removed"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/work-experience/5', {
+    method: 'DELETE',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+
