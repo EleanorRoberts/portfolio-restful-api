@@ -64,6 +64,7 @@ fetch('http://localhost:3000/about-me', {
 --- 
 
 `POST`
+
 * Adds a single new about me entry to the about_me table.
 * **Data Params**
 
@@ -119,6 +120,53 @@ URL: `/about-me/{id}`
 
 `PUT`
 
+* Edits a single about me entry in the about_me table using the {id} in the url.
+* **Data Params**
+
+```javascript
+{
+    "field": [string],
+    "newValue": [string]
+};
+  ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "About me updated!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Validation failed :( Check your input!"
+    }`
+
+  OR
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/about-me/2', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        field: "name",
+        newValue: "potato-dog"
+    })
+})
+  ```
+
 ---
 
 `DELETE`
@@ -157,7 +205,7 @@ URL: `/about-me/{name}`
 
 `GET`
 
-* Gets one about me entry from the about_me table, based on the about me name.
+* Fetches one about me entry from the about_me table using the about me name in the url.
 
 * **Success Response:**
 
@@ -299,6 +347,53 @@ URL: `/education/{id}`
 
 `PUT`
 
+* Edits a single education entry in the education table using the {id} in the url.
+* **Data Params**
+
+```javascript
+{
+    "field": [string],
+    "newValue": [string]
+};
+  ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Education updated!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Validation failed :( Check your input!"
+    }`
+
+  OR
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/education/12', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        field: "institution",
+        newValue: "potato-dog"
+    })
+})
+  ```
+
 ---
 
 `DELETE`
@@ -426,6 +521,53 @@ URL: `/hobbies/{id}`
 ---
 
 `PUT`
+
+* Edits a single hobby entry in the hobbies table using the {id} in the url.
+* **Data Params**
+
+```javascript
+{
+    "field": [string],
+    "newValue": [string]
+};
+  ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Hobby updated!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Validation failed :( Check your input!"
+    }`
+
+  OR
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/hobbies/5', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        field: "name",
+        newValue: "potato-dog"
+    })
+})
+  ```
 
 ---
 
@@ -562,6 +704,53 @@ URL: `/other-certifications/{id}`
 ---
 
 `PUT`
+
+* Edits a single other certification entry in the other-certifications table using the {id} in the url.
+* **Data Params**
+
+```javascript
+{
+    "field": [string],
+    "newValue": [string]
+};
+  ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Other certification updated!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Validation failed :( Check your input!"
+    }`
+
+  OR
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/other-certifications/1', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        field: "name",
+        newValue: "potato-dog"
+    })
+})
+  ```
 
 ---
 
@@ -704,6 +893,53 @@ URL: `/projects/{id}`
 
 `PUT`
 
+* Edits a single project entry in the projects table using the {id} in the url.
+* **Data Params**
+
+```javascript
+{
+    "field": [string],
+    "newValue": [string]
+};
+  ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Project updated!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Validation failed :( Check your input!"
+    }`
+
+  OR
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/projects/5', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        field: "name",
+        newValue: "potato-dog"
+    })
+})
+  ```
+
 ---
 
 `DELETE`
@@ -841,6 +1077,53 @@ URL: `/work-experience/{id}`
 ---
 
 `PUT`
+
+* Edits a single work experience entry in the work_experience table using the {id} in the url.
+* **Data Params**
+
+```javascript
+{
+    "field": [string],
+    "newValue": [string]
+};
+  ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:** `{
+    "success": true,
+    "message": "Work experience updated!"
+    }`
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Validation failed :( Check your input!"
+    }`
+
+  OR
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "Something went wrong!"
+    }`
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/work-experience/999', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        field: "position",
+        newValue: "Potato dog"
+    })
+})
+  ```
 
 ---
 
