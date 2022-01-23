@@ -19,6 +19,6 @@ class GetAllAboutMeController extends Controller
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
         $aboutMe = $this->model->getAllAboutMe();
-        return $this->respondWithJson($response, $aboutMe);
+        return $this->respondWithJson($response, ['About me added!'], $aboutMe);
     }
 }

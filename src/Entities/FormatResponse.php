@@ -2,20 +2,16 @@
 
 namespace App\Entities;
 
+use PDO;
+
 class FormatResponse
 {
-    public static function convertToDefault($attempt, $newEntryId = null): array {
-        $message = ["success" => true, "message" => "All clear", "status" => 200];
-        if (!($message['data'] = $attempt)) {
+    public static function convertToDefault($attempt, $message): array {
+        $message = ["success" => true, "message" => $message, "status" => 200];
+        if (!$attempt) {
             $message["success"] = false;
-            $message["message"] = "There was a problem :(";
-            $message["status"] = 404;
-        } else {
-            if ($newEntryId !== null) {
-                $message["message"] = "Thanks for the new entry!";
-                $message['data'] = ['newDinoId' => $newEntryId] ;
-            }
+            $message["status"] = 400;
         }
-        return ($message);
+        return $message;
     }
 }
