@@ -1,23 +1,22 @@
 # ************************************************************
-# Sequel Pro SQL dump
-# Version 5446
+# Sequel Ace SQL dump
+# Version 20025
 #
-# https://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
+# https://sequel-ace.com/
+# https://github.com/Sequel-Ace/Sequel-Ace
 #
-# Host: 127.0.0.1 (MySQL 5.5.5-10.6.4-MariaDB-1:10.6.4+maria~focal)
+# Host: 127.0.0.1 (MySQL 5.7.36)
 # Database: CV
-# Generation Time: 2021-12-11 01:19:38 +0000
+# Generation Time: 2022-01-23 15:11:59 +0000
 # ************************************************************
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40101 SET @OLD_SQL_MODE='NO_AUTO_VALUE_ON_ZERO', SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
@@ -30,7 +29,7 @@ CREATE TABLE `about_me` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) DEFAULT NULL,
   `description` varchar(600) DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,8 +38,8 @@ LOCK TABLES `about_me` WRITE;
 
 INSERT INTO `about_me` (`id`, `name`, `description`, `deleted`)
 VALUES
-	(1,'about-me','I am a friendly and passionate software developer, looking for a challenging and innovative career in the exciting world of tech. I am currently studying at the EyUp Skills coding academy – a sixteen week programming bootcamp run in partnership with the award-winning iO Academy – and am due to graduate in mid-December. My aptitude for technology and computers originally stemmed from my adoration of gaming, and my gentle obsession over logic puzzles and my time with iO Academy has allowed me to fully explore and reignite my enthusiasm.',0),
-	(2,'io-academy','I am currently studying software development at iO Academy, which includes the creation of many projects both individually and in a scrum team. I’m personally proud of the ones below, but please see my portfolio for the rest.',0),
+	(1,'about-me','I am a friendly and passionate software developer, looking for a challenging and innovative career in the exciting world of tech. I have just completed EyUp Skills coding academy – a sixteen week programming bootcamp run in partnership with the award-winning iO Academy – and graduated in mid-December. My aptitude for technology and computers originally stemmed from my adoration of gaming, and my gentle obsession over logic puzzles and my time with iO Academy has allowed me to fully explore and reignite my enthusiasm.',0),
+	(2,'io-academy','I recently enjoyed studying software development at iO Academy, which includes the creation of many projects both individually and in a scrum team. Please visit my projects to learn more!',0),
 	(4,'testing','test',1);
 
 /*!40000 ALTER TABLE `about_me` ENABLE KEYS */;
@@ -59,7 +58,7 @@ CREATE TABLE `education` (
   `grade` varchar(20) DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -84,7 +83,7 @@ DROP TABLE IF EXISTS `hobbies`;
 CREATE TABLE `hobbies` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -116,7 +115,7 @@ CREATE TABLE `other_certifications` (
   `name` varchar(100) DEFAULT NULL,
   `certifier` varchar(100) DEFAULT NULL,
   `date_achieved` date DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -126,8 +125,8 @@ LOCK TABLES `other_certifications` WRITE;
 INSERT INTO `other_certifications` (`id`, `name`, `certifier`, `date_achieved`, `deleted`)
 VALUES
 	(1,'Scrum Master Certification','Scrum Alliance','2021-09-01',0),
-	(2,'Piano Grade 4',NULL,NULL,0),
-	(3,'Singing Grade 4',NULL,NULL,0),
+	(2,'Piano Grade 5','ABRSM','2013-04-01',0),
+	(3,'Singing Grade 4','Trinity College Longon','2013-06-01',0),
 	(4,'potato',NULL,NULL,1);
 
 /*!40000 ALTER TABLE `other_certifications` ENABLE KEYS */;
@@ -145,20 +144,23 @@ CREATE TABLE `projects` (
   `about` varchar(500) DEFAULT NULL,
   `github_link` varchar(200) DEFAULT NULL,
   `live_version` varchar(200) DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `image_url` varchar(200) DEFAULT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
 
-INSERT INTO `projects` (`id`, `name`, `about`, `github_link`, `live_version`, `deleted`)
+INSERT INTO `projects` (`id`, `name`, `about`, `github_link`, `live_version`, `image_url`, `deleted`)
 VALUES
-	(1,'Dinosaur Listing App','Fetching information from a MySQL database containing Dinosaurs and related information, we created an PHP OOP application to view the collection. This included designing an OOP architecture, then utilising Bootstrap UI and SASS to modify the front-end of the application. In particular, I worked on the code implementing a ‘More info’ page for each dinosaur, including functionality, Bootstrap UI and the related unit testing in PHPUnit for this page.','https://github.com/iO-Academy/2021-aug-dinos-listing',NULL,0),
-	(2,'iO Aptitude Test','In this project we began to rebuild the aptitude test application, an existing legacy project, using JavaScript and React, which will be used in the future to test possible applicants for iO Academy. This project utilised a pre-built RESTful API as well as Bootstrap UI.','https://github.com/iO-Academy/aptitude-test-react',NULL,0),
-	(3,'Capybara Canvas',NULL,'https://github.com/iO-Academy/2021-aug-jsPaint',NULL,0),
-	(4,'Academy Portal',NULL,'https://github.com/iO-Academy/AcademyPortal',NULL,0),
-	(5,'potato','testing','','',1);
+	(1,'Dinosaur Listing App','Fetching information from a MySQL database containing Dinosaurs and related information, we created an PHP OOP application to view the collection. This included designing an OOP architecture, then utilising Bootstrap UI and SASS to modify the front-end of the application. In particular, I worked on the code implementing a ‘More info’ page for each dinosaur, including functionality, Bootstrap UI and the related unit testing in PHPUnit for this page.','https://github.com/iO-Academy/2021-aug-dinos-listing','https://dev.io-academy.uk/projects/2021-aug/2021-aug-dinos-listing/',NULL,0),
+	(2,'iO Aptitude Test','In this project we began to rebuild the aptitude test application, an existing legacy project, using JavaScript and React, which will be used in the future to test possible applicants for iO Academy. This project utilised a pre-built RESTful API as well as Bootstrap UI.','https://github.com/iO-Academy/aptitude-test-react',NULL,NULL,0),
+	(3,'Capybara Canvas','For our first team project at the academy we built a paint application using vanilla JS and HTML canvas. It was a great introduction into working in a scrum team, and we were greatly pleased with the functionality we managed to achieve.','https://github.com/iO-Academy/2021-aug-jsPaint','https://dev.io-academy.uk/projects/2021-aug/2021-aug-jsPaint/',NULL,0),
+	(4,'Academy Portal','The Academy Portal is an iO resource built and improved by past students. For this project week, we took on a mixture of bug-fixes and feature updates, including most notable the creation of a new multi-page form for an application process directly linked to portal. ','https://github.com/iO-Academy/AcademyPortal',NULL,NULL,1),
+	(5,'Team Generator','After the academy, I created an application to generates teams. You can enter as many names and the number of teams as you’d like, and the application will randomly create teams for you. Using Sass and Bootstrap for the front-end styling of the page, and typescript to validate input fields and manage the logic required to randomise the name selection.','https://github.com/EleanorRoberts/teamPicker','https://2021-eleanorr.dev.io-academy.uk/team-generator/','https://shots.plesk.com/?url=http%3A%2F%2Fteam-generator.2021-eleanorr.dev.io-academy.uk%2F&product=Plesk%2F18.0.40&type=jpeg&width=1600&height=1200&scale=1&delay=0&cache=3600&sign=bd054cd978ad7e45107',0),
+	(6,'Aging on Planets','This fun application was built using a previously created SVG I made, and utilised typescript to calculate what a user inputted age would be in other planetary years.','https://github.com/EleanorRoberts/agingOnPlanets','https://2021-eleanorr.dev.io-academy.uk/aging-on-planets/','https://shots.plesk.com/?url=http%3A%2F%2Faging-on-planets.2021-eleanorr.dev.io-academy.uk%2F&product=Plesk%2F18.0.40&type=jpeg&width=1600&height=1200&scale=1&delay=0&cache=3600&sign=48ec68afeb62d044d',0),
+	(8,'Canine Compass','In our final iO Academy project we created a dog walk mapping application, built with a vanilla JavaScript frontend and a node API backend paired with a MongoDB database.','https://github.com/iO-Academy/2021-aug-map-my-dog-walk-fe/blob/main/JS/locator.js, https://github.com/iO-Academy/2021-aug-map-my-dog-walk',NULL,NULL,0);
 
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -176,7 +178,7 @@ CREATE TABLE `work_experience` (
   `start_date` date DEFAULT NULL,
   `leave_date` date DEFAULT NULL,
   `about` varchar(500) DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
