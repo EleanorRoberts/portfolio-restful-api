@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Abstracts\Controller;
-use App\Entities\Validator;
+use App\Services\FormatResponse;
+use App\Validator\Validator;
 use App\Models\AboutMeModel;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -23,10 +24,10 @@ class EditAboutMeController extends Controller
         if (Validator::validateEditAboutMe($data)) {
             $attempt = $this->model->editAboutMe($args['id'], $data);
             if ($attempt) {
-                return $this->respondWithJson($response, ['About me updated!']);
+                return $this->respondWithJson($response, FormatResponse::convertToDefault('About me updated!'));
             }
-            return $this->respondWithJson($response, ['Something broke :( Not updated'], 400);
+            return $this->respondWithJson($response, FormatResponse::convertToDefault('Something broke :( Not updated', false), 400);
         }
-        return $this->respondWithJson($response, ['Check your input! Validation failed :( Not updated'], 400);
+        return $this->respondWithJson($response, FormatResponse::convertToDefault('Check your input! Validation failed :( Not updated', false), 400);
     }
 }

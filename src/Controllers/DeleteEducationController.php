@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Abstracts\Controller;
 use App\Models\EducationModel;
+use App\Services\FormatResponse;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -20,8 +21,8 @@ class DeleteEducationController extends Controller
     {
         $attempt = $this->model->deleteEducation($args['id']);
         if ($attempt) {
-            return $this->respondWithJson($response, ['Education removed!']);
+            return $this->respondWithJson($response, FormatResponse::convertToDefault('Education removed!'));
         }
-        return $this->respondWithJson($response, ['Something broke :( Not removed'], 400);
+        return $this->respondWithJson($response, FormatResponse::convertToDefault('Something broke :( Not removed', false), 400);
     }
 }

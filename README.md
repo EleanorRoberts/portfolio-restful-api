@@ -1,5 +1,4 @@
 
-- Run `npm install` in the git repo to install the necessary modules.
 - Run `composer start` to begin the application
 - Run `` to run the unit tests
 
@@ -226,6 +225,15 @@ URL: `/about-me/{name}`
     "success": false,
     "message": "Something went wrong!"
     }`
+
+  OR
+
+  * **Code:** 404 BAD REQUEST <br />
+    **Content:** `{
+    "success": false,
+    "message": "There's no about me with that name!"
+    }`
+
 
 * **Sample Call:**
 

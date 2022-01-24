@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Abstracts\Controller;
 use App\Models\HobbiesModel;
+use App\Services\FormatResponse;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -18,7 +19,10 @@ class GetAllHobbiesController extends Controller
 
     public function __invoke(RequestInterface $request, ResponseInterface $response, Array $args): ResponseInterface
     {
-        $hobbies = $this->model->getAllHobbies();
-        return $this->respondWithJson($response, $hobbies);
+        $attempt = $this->model->getAllHobbies();
+        if ($attempt) {
+            return $this->respondWithJson($response, FormatResponse::convertToDefault('Retrieved all hobbies!', true, $attempt));
+        }
+        return $this->respondWithJson($response, FormatResponse::convertToDefault('Something went wrong!', false));
     }
 }

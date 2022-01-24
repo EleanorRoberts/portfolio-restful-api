@@ -2,7 +2,7 @@
 
 namespace Tests\Entities;
 
-use App\Entities\Validator;
+use App\Validator\Validator;
 use Tests\TestCase;
 use TypeError;
 

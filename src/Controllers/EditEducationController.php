@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Abstracts\Controller;
-use App\Entities\Validator;
+use App\Services\FormatResponse;
+use App\Validator\Validator;
 use App\Models\EducationModel;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -23,10 +24,10 @@ class EditEducationController extends Controller
         if (Validator::validateEditEducation($data)) {
             $attempt = $this->model->editEducation($args['id'], $data);
             if ($attempt) {
-                return $this->respondWithJson($response, ['Education updated!']);
+                return $this->respondWithJson($response, FormatResponse::convertToDefault('Education updated!'));
             }
-            return $this->respondWithJson($response, ['Something broke :( Not updated'], 400);
+            return $this->respondWithJson($response, FormatResponse::convertToDefault('Something broke :( Not updated', false), 400);
         }
-        return $this->respondWithJson($response, ['Check your input! Validation failed :( Not updated'], 400);
+        return $this->respondWithJson($response, FormatResponse::convertToDefault('Check your input! Validation failed :( Not updated', false), 400);
     }
 }
