@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Entities;
+namespace Tests\Validator;
 
 use App\Validator\Validator;
 use Tests\TestCase;
@@ -26,15 +26,11 @@ class ValidatorTest extends TestCase
         $attempt = Validator::validateAddAboutMe($testData);
     }
 
-//    public function testValidateAddAboutMeMalformed(): void {
-//        $testData = [
-//            'yoyo' => 'The kids are back in town',
-//            3030 => ['Hakuna matatat']
-//        ];
-//        $this->expectException(TypeError::class);
-//        $this->assertStatus(422);
-//        $attempt = Validator::validateAddAboutMe($testData);
-//    }
+    public function testValidateAddAboutMeMalformed(): void {
+        $testData = 'Potatoes';
+        $this->expectException(TypeError::class);
+        $attempt = Validator::validateAddAboutMe($testData);
+    }
 
     // Edit AboutMe tests
 //    public function testValidateEditAboutMeShortStringSuccess(): void {

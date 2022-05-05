@@ -1,38 +1,31 @@
 {
-    "name": "slim/slim-skeleton",
-    "description": "A Slim Framework skeleton application for rapid development",
+    "description": "An API containing all my portfolio information",
     "keywords": [
         "microframework",
         "rest",
         "router",
         "psr7"
     ],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "homepage": "https://portfolio-frontend.2021-eleanorr.dev.io-academy.uk/",
     "license": "MIT",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
-        },
-        {
-            "name": "Pierre Berube",
-            "email": "pierre@lgse.com",
-            "homepage": "http://www.lgse.com/"
+            "name": "Eleanor Roberts"
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "ext-json": "*",
         "ext-pdo": "*",
         "monolog/monolog": "^1.24",
         "php-di/php-di": "^6.0",
         "slim/php-view": "^2.2",
         "slim/psr7": "^1.4",
-        "slim/slim": "^4.1"
+        "slim/slim": "^4.1",
+        "vlucas/phpdotenv": "^5.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^9.5"
     },
     "config": {
         "process-timeout": 0,
@@ -50,6 +43,6 @@
     },
     "scripts": {
         "start": "php -S localhost:8080 -t public",
-        "test": "phpunit"
+        "test": "./vendor/bin/phpunit"
     }
 }

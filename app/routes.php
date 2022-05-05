@@ -2,10 +2,11 @@
 declare(strict_types=1);
 
 use Slim\App;
-use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app) {
     $container = $app->getContainer();
+
+
 
     // Work experience
     $app->get('/work-experience', 'GetAllWorkExperienceController');
@@ -38,4 +39,7 @@ return function (App $app) {
     $app->put('/about-me/{id}', 'EditAboutMeController');
     $app->delete('/about-me/{id}', 'DeleteAboutMeController');
     $app->get('/about-me/{name}', 'GetOneAboutMeController');
+
+    // Testing
+//    $app->get('/testing', 'TestingController');
 };

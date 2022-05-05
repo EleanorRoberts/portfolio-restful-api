@@ -5,9 +5,11 @@ namespace App\Validator;
 class Validator
 {
     public static function validateAddAboutMe(array $data): bool {
-        $nameValidation = self::validateShortString($data['name']);
-        $descriptionValidation = self::validateLongString($data['description']);
-        return ($nameValidation && $descriptionValidation);
+        if (array_key_exists('name', $data) && array_key_exists('description', $data)) {
+            $nameValidation = self::validateShortString($data['name']);
+            $descriptionValidation = self::validateLongString($data['description']);
+        }
+        return (($nameValidation ?? false) && ($descriptionValidation ?? false));
     }
 
     public static function validateEditAboutMe(array $data): bool {
@@ -157,8 +159,9 @@ class Validator
         return preg_match($regex, $date);
     }
 
-    protected static function validateUrl(string $date): bool {
-        $regex = '%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)(?:\.(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)*(?:\.[a-z\x{00a1}-\x{ffff}]{2,6}))(?::\d+)?(?:[^\s]*)?$%iu';
-        return preg_match($regex, $date);
+    protected static function validateUrl(string $url): bool {
+        // IN PROGRESS
+        return true;
+//        return filter_var($url, FILTER_VALIDATE_URL);
     }
 }

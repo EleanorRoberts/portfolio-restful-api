@@ -34,7 +34,7 @@ return function (ContainerBuilder $containerBuilder) {
     };
 
     $container['db'] = function () {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=CV;charset=UTF8', 'root', 'password');
+        $db = new PDO('mysql:host=127.0.0.1;dbname=cv;charset=UTF8', 'root', 'password');
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         return $db;
     };
@@ -78,6 +78,9 @@ return function (ContainerBuilder $containerBuilder) {
     $container['EditAboutMeController'] = DI\factory('\App\Factories\Controllers\EditAboutMeControllerFactory');
     $container['DeleteAboutMeController'] = DI\factory('\App\Factories\Controllers\DeleteAboutMeControllerFactory');
     $container['GetOneAboutMeController'] = DI\factory('\App\Factories\Controllers\GetOneAboutMeControllerFactory');
+
+    // Testing
+    $container['TestingController'] = DI\factory('\App\Factories\Controllers\TestingControllerFactory');
 
     $containerBuilder->addDefinitions($container);
 };

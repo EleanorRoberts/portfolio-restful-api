@@ -10,11 +10,10 @@
 **Things to Do**
 -
 - Add, Edit and Delete functionalities for all but WE??
-- Fix editAboutMeController functionality??
 - Unit testing
+  - Some tests commented out
 - Validation
-- Format message response
-  - replace in each controller so standard response gets given. Use Utility Class
+  - Fix url validation
 
 
 # Portfolio RESTful API Routes
