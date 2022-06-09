@@ -6,8 +6,6 @@ use Slim\App;
 return function (App $app) {
     $container = $app->getContainer();
 
-
-
     // Work experience
     $app->get('/work-experience', 'GetAllWorkExperienceController');
     $app->post('/work-experience', 'AddWorkExperienceController');
@@ -39,6 +37,9 @@ return function (App $app) {
     $app->put('/about-me/{id}', 'EditAboutMeController');
     $app->delete('/about-me/{id}', 'DeleteAboutMeController');
     $app->get('/about-me/{name}', 'GetOneAboutMeController');
+
+    // Admin
+    $app->get('/login', 'LoginController');
 
     // Testing
 //    $app->get('/testing', 'TestingController');
